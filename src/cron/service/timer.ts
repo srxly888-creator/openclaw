@@ -256,6 +256,8 @@ function emitFailureAlert(
   },
 ) {
   const safeJobName = params.job.name || params.job.id;
+  const resolvedAgentId =
+    params.job.state.lastResolvedAgentId ?? resolveCronJobAgentId(state, params.job);
   const truncatedError = (params.error?.trim() || "unknown error").slice(0, 200);
   const text = [
     `Cron job "${safeJobName}" failed ${params.consecutiveErrors} times`,
@@ -281,7 +283,7 @@ function emitFailureAlert(
     return;
   }
 
-  state.deps.enqueueSystemEvent(text, { agentId: params.job.agentId });
+  state.deps.enqueueSystemEvent(text, { agentId: resolvedAgentId });
   if (params.job.wakeMode === "now") {
     state.deps.requestHeartbeatNow({ reason: `cron:${params.job.id}:failure-alert` });
   }
@@ -944,10 +946,14 @@ async function runStartupCatchupCandidate(
       endedAt: state.deps.nowMs(),
     };
   } catch (err) {
+    const resolvedAgentId = resolveCronJobAgentId(state, candidate.job);
     return {
       jobId: candidate.jobId,
       status: "error",
       error: String(err),
+      resolvedAgentId,
+      deliveryAttempted: false,
+      delivered: false,
       startedAt,
       endedAt: state.deps.nowMs(),
     };
