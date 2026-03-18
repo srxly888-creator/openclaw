@@ -577,7 +577,7 @@
   },
   {
     "file": "src/plugins/runtime/runtime-whatsapp.ts",
-    "line": 1,
+    "line": 9,
     "kind": "import",
     "specifier": "../../../extensions/whatsapp/runtime-api.js",
     "resolvedPath": "extensions/whatsapp/runtime-api.js",
@@ -585,15 +585,7 @@
   },
   {
     "file": "src/plugins/runtime/runtime-whatsapp.ts",
-    "line": 8,
-    "kind": "import",
-    "specifier": "../../../extensions/whatsapp/runtime-api.js",
-    "resolvedPath": "extensions/whatsapp/runtime-api.js",
-    "reason": "imports extension-owned file from src/plugins"
-  },
-  {
-    "file": "src/plugins/runtime/runtime-whatsapp.ts",
-    "line": 75,
+    "line": 74,
     "kind": "dynamic-import",
     "specifier": "../../../extensions/whatsapp/login-qr-api.js",
     "resolvedPath": "extensions/whatsapp/login-qr-api.js",
@@ -601,7 +593,7 @@
   },
   {
     "file": "src/plugins/runtime/runtime-whatsapp.ts",
-    "line": 85,
+    "line": 79,
     "kind": "dynamic-import",
     "specifier": "../../../extensions/whatsapp/action-runtime-api.js",
     "resolvedPath": "extensions/whatsapp/action-runtime-api.js",

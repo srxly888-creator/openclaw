@@ -1,5 +1,5 @@
-import { getActiveWebListener } from "../../../extensions/whatsapp/runtime-api.js";
 import {
+  getActiveWebListener,
   getWebAuthAgeMs,
   logoutWeb,
   logWebSelfId,
